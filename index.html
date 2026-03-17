@@ -13,24 +13,23 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f9fafb; /* bg-gray-50 */
         }
     </style>
 
     <title>Note-Taker App</title>
 </head>
-<body id="body" class="text-gray-800 antialiased min-h-screen flex flex-col items-center py-10 px-4">
+<body id="body" class="bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 min-h-screen antialiased text-gray-800 flex flex-col items-center py-10 px-4">
 
     <!-- Header -->
     <header class="w-full max-w-3xl mb-8 text-center">
-        <h1 id="note-head" class="text-4xl font-extrabold text-gray-900 tracking-tight">Note-Taker</h1>
+        <h1 id="note-head" class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 tracking-tight">Note-Taker</h1>
         <p class="text-gray-500 mt-2 text-sm">Organize your daily tasks beautifully.</p>
     </header>
 
     <main class="w-full max-w-3xl flex flex-col gap-8 w-full">
 
         <!-- Input Section -->
-        <section class="bg-white shadow-sm border border-gray-200 rounded-xl p-6 sm:p-8">
+        <section class="bg-white/60 backdrop-blur-lg shadow-xl border border-white/50 rounded-xl p-6 sm:p-8">
             <h2 class="text-xl font-semibold mb-6 text-gray-800 border-b pb-2">Add Your Task</h2>
 
             <div id="note-body" class="flex flex-col gap-5">
@@ -40,26 +39,26 @@
                     <div class="flex-1">
                         <label for="note-task" class="block text-sm font-medium text-gray-700 mb-1">Task Name</label>
                         <input type="text" id="note-task" placeholder="e.g. Design a new logo"
-                            class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                            class="w-full bg-white/50 border border-white/30 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all shadow-inner">
                     </div>
 
                     <!-- Task Time -->
                     <div class="flex-1">
                         <label for="note-time" class="block text-sm font-medium text-gray-700 mb-1">Time</label>
                         <input type="time" id="note-time"
-                            class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                            class="w-full bg-white/50 border border-white/30 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all shadow-inner">
                     </div>
                 </div>
 
                 <!-- Checkbox & Submit -->
                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-2 gap-4">
                     <label class="flex items-center gap-2 cursor-pointer group">
-                        <input type="checkbox" id="check" class="w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
+                        <input type="checkbox" id="check" class="w-5 h-5 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
                         <span class="text-sm font-medium text-gray-700 group-hover:text-gray-900">Task completed initially?</span>
                     </label>
 
                     <button id="button" type="button"
-                        class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-6 rounded-lg shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                        class="w-full sm:w-auto bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white font-semibold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         Add Task
                     </button>
                 </div>
