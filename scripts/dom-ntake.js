@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Create Task Card Container
         const cardContRow = document.createElement('div');
-        cardContRow.className = `flex items-center justify-between p-4 rounded-xl shadow-sm border transition-all hover:shadow-md ${isChecked ? 'bg-green-50 border-green-200' : 'bg-white border-gray-200'}`;
+        cardContRow.className = `flex items-center justify-between p-4 rounded-xl transition-all hover:shadow-md ${isChecked ? 'bg-green-50/70 backdrop-blur-md border border-green-200/50 shadow-sm' : 'bg-white/60 backdrop-blur-md border border-white/40 shadow-sm'}`;
 
         // Left Side Content
         const contentDiv = document.createElement('div');
@@ -48,16 +48,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const toggleCheck = document.createElement('input');
         toggleCheck.type = 'checkbox';
         toggleCheck.checked = isChecked;
-        toggleCheck.className = 'w-5 h-5 text-blue-600 border-gray-300 rounded cursor-pointer focus:ring-blue-500';
+        toggleCheck.className = 'w-6 h-6 text-indigo-600 border-gray-300 rounded cursor-pointer focus:ring-indigo-500';
 
         toggleCheck.addEventListener('change', (e) => {
             const checked = e.target.checked;
             if (checked) {
-                cardContRow.className = 'flex items-center justify-between p-4 rounded-xl shadow-sm border transition-all hover:shadow-md bg-green-50 border-green-200';
+                cardContRow.className = 'flex items-center justify-between p-4 rounded-xl transition-all hover:shadow-md bg-green-50/70 backdrop-blur-md border border-green-200/50 shadow-sm';
                 titleHeading.className = 'text-lg font-semibold text-green-800 line-through';
                 timeSpan.className = 'text-sm font-medium text-green-600';
             } else {
-                cardContRow.className = 'flex items-center justify-between p-4 rounded-xl shadow-sm border transition-all hover:shadow-md bg-white border-gray-200';
+                cardContRow.className = 'flex items-center justify-between p-4 rounded-xl transition-all hover:shadow-md bg-white/60 backdrop-blur-md border border-white/40 shadow-sm';
                 titleHeading.className = 'text-lg font-semibold text-gray-900';
                 timeSpan.className = 'text-sm font-medium text-gray-500';
             }
@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
             </svg>
         `;
-        deleteBtn.className = 'text-gray-400 hover:text-red-500 transition-colors p-2 rounded-lg hover:bg-red-50 focus:outline-none';
+        deleteBtn.className = 'text-gray-400 hover:text-red-500 transition-all p-2 rounded-xl hover:bg-red-50/80 focus:outline-none';
 
         deleteBtn.addEventListener('click', () => {
             cardContRow.style.opacity = '0';
