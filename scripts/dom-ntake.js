@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Create Task Card Container
         const cardContRow = document.createElement('div');
-        cardContRow.className = `group flex items-center justify-between p-4 rounded-xl transition-all duration-200 ease-in-out border ${isChecked ? 'bg-gray-50 border-gray-200' : 'bg-white border-gray-200 shadow-sm hover:border-gray-300'}`;
+        cardContRow.className = `group flex items-center justify-between p-2 rounded-md transition-all duration-200 ease-in-out border-b border-transparent ${isChecked ? 'opacity-50' : 'hover:bg-gray-50'}`;
 
         // Left Side Content
         const contentDiv = document.createElement('div');
@@ -59,11 +59,11 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleCheck.addEventListener('change', (e) => {
             const checked = e.target.checked;
             if (checked) {
-                cardContRow.className = 'group flex items-center justify-between p-4 rounded-xl transition-all duration-200 ease-in-out border bg-gray-50 border-gray-200';
+                cardContRow.className = 'group flex items-center justify-between p-2 rounded-md transition-all duration-200 ease-in-out border-b border-transparent opacity-50';
                 titleHeading.className = 'text-base font-medium transition-colors text-gray-400 line-through';
                 timeSpan.className = 'text-xs transition-colors text-gray-400';
             } else {
-                cardContRow.className = 'group flex items-center justify-between p-4 rounded-xl transition-all duration-200 ease-in-out border bg-white border-gray-200 shadow-sm hover:border-gray-300';
+                cardContRow.className = 'group flex items-center justify-between p-2 rounded-md transition-all duration-200 ease-in-out border-b border-transparent hover:bg-gray-50';
                 titleHeading.className = 'text-base font-medium transition-colors text-gray-900';
                 timeSpan.className = 'text-xs transition-colors text-gray-500 font-medium';
             }
