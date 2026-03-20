@@ -18,60 +18,116 @@
 
     <title>Note-Taker App</title>
 </head>
-<body id="body" class="bg-[#FAFAFA] min-h-screen antialiased text-[#37352F] flex flex-col items-center py-12 px-4 sm:px-6">
+<body id="body" class="bg-[#FAFAFA] min-h-screen antialiased text-[#37352F] flex flex-row">
 
-    <!-- Main Container -->
-    <main class="w-full max-w-2xl flex flex-col gap-8">
+    <!-- Sidebar -->
+    <aside class="w-64 h-screen hidden md:flex flex-col bg-[#F7F7F5] border-r border-[#EBEBEA] shrink-0 sticky top-0 py-4">
+        <div class="px-4 mb-6 flex items-center gap-2">
+            <div class="w-5 h-5 bg-gray-300 rounded-sm flex items-center justify-center text-white text-xs font-bold">K</div>
+            <span class="font-medium text-sm">kiran's workspace</span>
+        </div>
+        <nav class="flex-1 px-2 space-y-1">
+            <a href="#" class="flex items-center gap-2 px-2 py-1.5 bg-[#EBEBEA] rounded-md text-sm font-medium text-[#37352F]">
+                <span class="text-lg">📝</span> Tasks
+            </a>
+            <a href="#" class="flex items-center gap-2 px-2 py-1.5 hover:bg-[#EBEBEA] rounded-md text-sm font-medium text-gray-500 transition-colors">
+                <span class="text-lg">📅</span> Calendar
+            </a>
+            <a href="#" class="flex items-center gap-2 px-2 py-1.5 hover:bg-[#EBEBEA] rounded-md text-sm font-medium text-gray-500 transition-colors">
+                <span class="text-lg">⚙️</span> Settings
+            </a>
+        </nav>
+    </aside>
 
-        <!-- Header -->
-        <header class="w-full mt-4 mb-2">
-            <h1 id="note-head" class="text-3xl font-bold text-[#37352F]">Tasks</h1>
-            <p class="text-gray-400 mt-1 text-sm font-medium">Capture and organize your daily tasks.</p>
-        </header>
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col min-h-screen w-full relative">
+        <!-- Cover Image -->
+        <div class="w-full h-48 sm:h-64 object-cover overflow-hidden relative group">
+            <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto=format&fit=crop" alt="Cover Image" class="w-full h-full object-cover">
+            <button class="absolute top-4 right-4 bg-white/80 hover:bg-white backdrop-blur-sm px-3 py-1.5 rounded text-xs font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity shadow-sm border border-gray-200">
+                Change cover
+            </button>
+        </div>
 
-        <!-- Input Section -->
-        <section class="w-full py-2">
-            <div id="note-body" class="flex flex-col gap-6">
-                
-                <div class="flex flex-col sm:flex-row gap-6">
-                    <!-- Task Name -->
-                    <div class="flex-1">
-                        <label for="note-task" class="sr-only">Task Name</label>
-                        <input type="text" id="note-task" placeholder="What needs to be done?"
-                            class="w-full bg-transparent border-0 px-0 py-2 text-lg font-medium focus:outline-none focus:ring-0 transition-colors placeholder-gray-300">
-                    </div>
+        <!-- Page Content -->
+        <main class="w-full max-w-4xl mx-auto px-4 sm:px-12 md:px-24 pb-24 -mt-10 sm:-mt-16 relative z-10 flex flex-col">
 
-                    <!-- Task Time -->
-                    <div class="sm:w-32">
-                        <label for="note-time" class="sr-only">Time</label>
-                        <input type="time" id="note-time"
-                            class="w-full bg-transparent border-0 px-0 py-2 text-sm focus:outline-none focus:ring-0 transition-colors text-gray-400">
-                    </div>
-                </div>
+            <!-- Page Icon -->
+            <div class="text-[5rem] sm:text-[6rem] leading-none mb-4 group relative w-max cursor-pointer">
+                📝
+                <div class="absolute inset-0 hover:bg-black/5 rounded-lg transition-colors"></div>
+            </div>
 
-                <!-- Checkbox & Submit -->
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2">
-                    <label class="flex items-center gap-2 cursor-pointer group">
-                        <input type="checkbox" id="check" class="w-4 h-4 text-gray-900 border-gray-300 rounded focus:ring-gray-900 focus:ring-offset-1">
-                        <span class="text-sm font-medium text-gray-400 group-hover:text-[#37352F] transition-colors">Mark as completed</span>
-                    </label>
-
-                    <button id="button" type="button"
-                        class="w-full sm:w-auto bg-white border border-gray-200 hover:bg-gray-50 text-[#37352F] font-medium py-2 px-4 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-gray-200 focus:ring-offset-1 text-sm shadow-sm">
-                        Add Task
+            <!-- Header -->
+            <header class="w-full mb-8 group">
+                <h1 id="note-head" class="text-[2.5rem] font-bold text-[#37352F] leading-tight outline-none" contenteditable="true">Tasks</h1>
+                <div class="flex items-center gap-4 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button class="text-gray-400 hover:text-gray-600 text-sm font-medium flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg> Add comment
                     </button>
                 </div>
-            </div>
-        </section>
+            </header>
 
-        <!-- Tasks List Section -->
-        <section class="mt-2">
-            <div id="center-cont" class="flex flex-col gap-3">
-                <!-- Task Cards Will Be Injected Here -->
-            </div>
-        </section>
+            <!-- Divider -->
+            <div class="w-full h-[1px] bg-[#EBEBEA] mb-8"></div>
 
-    </main>
+            <!-- Input Section (Notion Block Style) -->
+            <section class="w-full mb-8 group relative pl-8">
+                <div class="absolute left-0 top-2 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center gap-1 cursor-grab">
+                    <div class="flex gap-[2px]">
+                        <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+                        <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+                    </div>
+                    <div class="flex gap-[2px]">
+                        <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+                        <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+                    </div>
+                    <div class="flex gap-[2px]">
+                        <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+                        <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
+                    </div>
+                </div>
+
+                <div id="note-body" class="flex flex-col gap-4">
+                    <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center bg-white p-4 rounded-lg border border-[#EBEBEA] shadow-sm hover:shadow-md transition-shadow">
+                        <!-- Checkbox & Task Name -->
+                        <div class="flex-1 flex items-center gap-3 w-full">
+                            <label class="flex items-center justify-center cursor-pointer shrink-0 w-6 h-6 border-2 border-gray-300 rounded-md hover:bg-gray-100 transition-colors">
+                                <input type="checkbox" id="check" class="sr-only">
+                                <span class="sr-only">Mark as completed</span>
+                                <svg class="w-4 h-4 text-white check-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                            </label>
+
+                            <input type="text" id="note-task" placeholder="What needs to be done?"
+                                class="w-full bg-transparent border-0 px-0 py-1 text-base font-medium focus:outline-none focus:ring-0 transition-colors placeholder-gray-300 text-[#37352F]">
+                        </div>
+
+                        <!-- Task Time -->
+                        <div class="shrink-0 flex items-center gap-2">
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <input type="time" id="note-time"
+                                class="bg-transparent border border-gray-200 rounded px-2 py-1 text-sm focus:outline-none focus:border-gray-300 transition-colors text-gray-500">
+                        </div>
+
+                        <!-- Add Button -->
+                        <button id="button" type="button"
+                            class="shrink-0 bg-[#37352F] hover:bg-[#2F2D28] text-white font-medium py-1.5 px-3 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#37352F] text-sm shadow-sm flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tasks List Section -->
+            <section class="w-full pl-8">
+                <div id="center-cont" class="flex flex-col gap-1">
+                    <!-- Task Cards Will Be Injected Here -->
+                </div>
+            </section>
+
+        </main>
+    </div>
 
     <script src="scripts/dom-ntake.js"></script>
 </body>
