@@ -23,23 +23,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Create Task Card Container
         const cardContRow = document.createElement('div');
-        cardContRow.className = `group flex items-center justify-between p-2 rounded-md transition-all duration-200 ease-in-out border-b border-transparent ${isChecked ? 'opacity-50' : 'hover:bg-gray-50'}`;
+        cardContRow.className = `group flex items-center justify-between p-2 rounded-md transition-all duration-200 ease-in-out border border-transparent ${isChecked ? 'opacity-50' : 'hover:bg-black/5'}`;
 
         // Left Side Content
         const contentDiv = document.createElement('div');
-        contentDiv.className = 'flex items-center gap-4 flex-1';
+        contentDiv.className = 'flex items-center gap-3 flex-1';
 
-        // Checkbox Toggle
+        // Custom Checkbox
+        const checkboxLabel = document.createElement('label');
+        checkboxLabel.className = 'flex items-center justify-center cursor-pointer shrink-0 w-5 h-5 border-2 border-gray-300 rounded hover:bg-gray-200 transition-colors relative';
+
         const toggleCheck = document.createElement('input');
         toggleCheck.type = 'checkbox';
         toggleCheck.checked = isChecked;
-        toggleCheck.className = 'w-5 h-5 text-gray-900 border-gray-300 rounded cursor-pointer focus:ring-gray-900 transition-colors shrink-0';
+        toggleCheck.className = 'sr-only';
+
+        const checkIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        checkIcon.setAttribute('class', `w-3 h-3 text-white absolute inset-0 m-auto ${isChecked ? 'block' : 'hidden'}`);
+        checkIcon.setAttribute('fill', 'none');
+        checkIcon.setAttribute('stroke', 'currentColor');
+        checkIcon.setAttribute('viewBox', '0 0 24 24');
+        checkIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>';
+
+        checkboxLabel.appendChild(toggleCheck);
+        checkboxLabel.appendChild(checkIcon);
 
         const textDiv = document.createElement('div');
         textDiv.className = 'flex flex-col gap-0.5';
 
         const titleHeading = document.createElement('h3');
-        titleHeading.className = `text-base font-medium transition-colors ${isChecked ? 'text-gray-400 line-through' : 'text-gray-900'}`;
+        titleHeading.className = `text-[15px] font-medium transition-colors ${isChecked ? 'text-gray-400 line-through' : 'text-gray-900'}`;
         titleHeading.textContent = nameofTask;
 
         const timeSpan = document.createElement('span');
@@ -49,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
         textDiv.appendChild(titleHeading);
         textDiv.appendChild(timeSpan);
 
-        contentDiv.appendChild(toggleCheck);
+        contentDiv.appendChild(checkboxLabel);
         contentDiv.appendChild(textDiv);
 
         // Right Side Controls
@@ -59,15 +72,27 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleCheck.addEventListener('change', (e) => {
             const checked = e.target.checked;
             if (checked) {
-                cardContRow.className = 'group flex items-center justify-between p-2 rounded-md transition-all duration-200 ease-in-out border-b border-transparent opacity-50';
-                titleHeading.className = 'text-base font-medium transition-colors text-gray-400 line-through';
+                cardContRow.className = 'group flex items-center justify-between p-2 rounded-md transition-all duration-200 ease-in-out border border-transparent opacity-50';
+                titleHeading.className = 'text-[15px] font-medium transition-colors text-gray-400 line-through';
                 timeSpan.className = 'text-xs transition-colors text-gray-400';
+                checkIcon.classList.remove('hidden');
+                checkboxLabel.classList.add('bg-blue-500', 'border-blue-500');
+                checkboxLabel.classList.remove('border-gray-300', 'hover:bg-gray-200');
             } else {
-                cardContRow.className = 'group flex items-center justify-between p-2 rounded-md transition-all duration-200 ease-in-out border-b border-transparent hover:bg-gray-50';
-                titleHeading.className = 'text-base font-medium transition-colors text-gray-900';
+                cardContRow.className = 'group flex items-center justify-between p-2 rounded-md transition-all duration-200 ease-in-out border border-transparent hover:bg-black/5';
+                titleHeading.className = 'text-[15px] font-medium transition-colors text-gray-900';
                 timeSpan.className = 'text-xs transition-colors text-gray-500 font-medium';
+                checkIcon.classList.add('hidden');
+                checkboxLabel.classList.remove('bg-blue-500', 'border-blue-500');
+                checkboxLabel.classList.add('border-gray-300', 'hover:bg-gray-200');
             }
         });
+
+        // Initial checkbox styling
+        if (isChecked) {
+            checkboxLabel.classList.add('bg-blue-500', 'border-blue-500');
+            checkboxLabel.classList.remove('border-gray-300', 'hover:bg-gray-200');
+        }
 
         // Delete Button
         const deleteBtn = document.createElement('button');
@@ -99,6 +124,31 @@ document.addEventListener("DOMContentLoaded", () => {
         taskInput.value = "";
         timeInput.value = "";
         checkInput.checked = false;
+
+        // Reset main check icon if present
+        const mainCheckIcon = document.querySelector('.check-icon');
+        if (mainCheckIcon) {
+            mainCheckIcon.classList.add('hidden');
+            mainCheckIcon.parentElement.classList.remove('bg-blue-500', 'border-blue-500');
+            mainCheckIcon.parentElement.classList.add('border-gray-300', 'hover:bg-gray-100');
+        }
+
         taskInput.focus();
     });
+
+    // Handle main input checkbox toggle
+    if (checkInput) {
+        checkInput.addEventListener('change', (e) => {
+            const icon = e.target.parentElement.querySelector('.check-icon');
+            if (e.target.checked) {
+                icon.classList.remove('hidden');
+                e.target.parentElement.classList.add('bg-blue-500', 'border-blue-500');
+                e.target.parentElement.classList.remove('border-gray-300', 'hover:bg-gray-100');
+            } else {
+                icon.classList.add('hidden');
+                e.target.parentElement.classList.remove('bg-blue-500', 'border-blue-500');
+                e.target.parentElement.classList.add('border-gray-300', 'hover:bg-gray-100');
+            }
+        });
+    }
 });
