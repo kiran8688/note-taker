@@ -1,15 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const submitBtn = document.querySelector('#button');
-    const center = document.getElementById('center-cont');
-    const taskInput = document.getElementById('note-task');
-    const timeInput = document.getElementById('note-time');
-    const checkInput = document.getElementById('check');
+    // DOM Element Selections
+    const submitBtn = document.querySelector('#button'); // The 'Add' button to create a new task
+    const center = document.getElementById('center-cont'); // The main container where task cards are appended
+    const taskInput = document.getElementById('note-task'); // Input field for the task name
+    const timeInput = document.getElementById('note-time'); // Input field for the task time
+    const checkInput = document.getElementById('check'); // Checkbox to mark task as completed initially
 
+    // Event listener for adding a new task
     submitBtn.addEventListener('click', () => {
+        // Retrieve and trim input values
         const nameofTask = taskInput.value.trim();
         const timeofTask = timeInput.value.trim();
         const isChecked = checkInput.checked;
 
+        // Validation Logic: Ensure both task name and time are provided before creation
         if (nameofTask === '' && timeofTask === '') {
             alert('Make sure the Name of the task & Time of the Task is entered');
             return;
@@ -21,15 +25,16 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Create Task Card Container
+        // --- Dynamic DOM Element Creation for Task Card ---
+        // Create the main wrapper for the individual task card
         const cardContRow = document.createElement('div');
         cardContRow.className = `group flex items-center justify-between p-2 rounded-md transition-all duration-200 ease-in-out border border-transparent ${isChecked ? 'opacity-50' : 'hover:bg-black/5'}`;
 
-        // Left Side Content
+        // Left Side Content: Contains the checkbox, task name, and time
         const contentDiv = document.createElement('div');
         contentDiv.className = 'flex items-center gap-3 flex-1';
 
-        // Custom Checkbox
+        // Create Custom Checkbox for the task card
         const checkboxLabel = document.createElement('label');
         checkboxLabel.className = 'flex items-center justify-center cursor-pointer shrink-0 w-5 h-5 border-2 border-gray-300 rounded hover:bg-gray-200 transition-colors relative';
 
@@ -65,10 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
         contentDiv.appendChild(checkboxLabel);
         contentDiv.appendChild(textDiv);
 
-        // Right Side Controls
+        // Right Side Controls: Contains action buttons like Delete
         const controlsDiv = document.createElement('div');
         controlsDiv.className = 'flex items-center ml-4 opacity-0 group-hover:opacity-100 transition-opacity';
 
+        // --- State Management: Handling Check/Uncheck ---
+        // Listens for changes on the task card's checkbox to toggle visual completion state
         toggleCheck.addEventListener('change', (e) => {
             const checked = e.target.checked;
             if (checked) {
@@ -88,13 +95,14 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Initial checkbox styling
+        // Apply initial checkbox styling if the task was created as 'completed'
         if (isChecked) {
             checkboxLabel.classList.add('bg-blue-500', 'border-blue-500');
             checkboxLabel.classList.remove('border-gray-300', 'hover:bg-gray-200');
         }
 
-        // Delete Button
+        // --- State Management: Handling Task Deletion ---
+        // Create Delete Button with trash/close icon SVG
         const deleteBtn = document.createElement('button');
         deleteBtn.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -103,29 +111,32 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
         deleteBtn.className = 'text-gray-400 hover:text-red-600 transition-colors p-2 rounded-lg hover:bg-red-50 focus:outline-none focus:ring-2 focus:ring-red-100';
 
+        // Event listener to animate and remove the task card from the DOM
         deleteBtn.addEventListener('click', () => {
             cardContRow.style.opacity = '0';
             cardContRow.style.transform = 'scale(0.98)';
             setTimeout(() => {
                 if(cardContRow.parentNode) {
-                    cardContRow.parentNode.removeChild(cardContRow);
+                    cardContRow.parentNode.removeChild(cardContRow); // Remove element after animation
                 }
             }, 200);
         });
 
+        // Assemble the final task card structure
         controlsDiv.appendChild(deleteBtn);
-
         cardContRow.appendChild(contentDiv);
         cardContRow.appendChild(controlsDiv);
 
+        // Append the new task card to the main container
         center.appendChild(cardContRow);
 
-        // Reset inputs
+        // --- Post-Creation Cleanup ---
+        // Reset the input fields for the next task
         taskInput.value = "";
         timeInput.value = "";
         checkInput.checked = false;
 
-        // Reset main check icon if present
+        // Reset the visual state of the main input checkbox icon
         const mainCheckIcon = document.querySelector('.check-icon');
         if (mainCheckIcon) {
             mainCheckIcon.classList.add('hidden');
@@ -133,10 +144,12 @@ document.addEventListener("DOMContentLoaded", () => {
             mainCheckIcon.parentElement.classList.add('border-gray-300', 'hover:bg-gray-100');
         }
 
+        // Set focus back to the task input for quick consecutive entry
         taskInput.focus();
     });
 
-    // Handle main input checkbox toggle
+    // --- State Management: Main Input Checkbox ---
+    // Handle visual toggle for the custom checkbox on the main input form
     if (checkInput) {
         checkInput.addEventListener('change', (e) => {
             const icon = e.target.parentElement.querySelector('.check-icon');

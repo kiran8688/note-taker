@@ -20,9 +20,10 @@
 </head>
 <body id="body" class="bg-[#FAFAFA] min-h-screen antialiased text-[#37352F] flex flex-row">
 
-    <!-- Sidebar -->
+    <!-- Sidebar: Contains navigation links and user workspace branding. Uses Tailwind for a fixed sidebar layout. -->
     <aside class="w-64 h-screen hidden md:flex flex-col bg-[#F7F7F5] border-r border-[#EBEBEA] shrink-0 sticky top-0 py-4">
         <div class="px-4 mb-6 flex items-center gap-2">
+            <!-- User Avatar & Workspace Name -->
             <div class="w-5 h-5 bg-gray-300 rounded-sm flex items-center justify-center text-white text-xs font-bold">K</div>
             <span class="font-medium text-sm">kiran's workspace</span>
         </div>
@@ -39,9 +40,9 @@
         </nav>
     </aside>
 
-    <!-- Main Content Area -->
+    <!-- Main Content Area: Flex container for the primary application interface -->
     <div class="flex-1 flex flex-col min-h-screen w-full relative">
-        <!-- Cover Image -->
+        <!-- Cover Image Section: Displays an Unsplash image with a hover-to-change button -->
         <div class="w-full h-48 sm:h-64 object-cover overflow-hidden relative group">
             <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto=format&fit=crop" alt="Cover Image" class="w-full h-full object-cover">
             <button class="absolute top-4 right-4 bg-white/80 hover:bg-white backdrop-blur-sm px-3 py-1.5 rounded text-xs font-medium text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity shadow-sm border border-gray-200">
@@ -49,16 +50,16 @@
             </button>
         </div>
 
-        <!-- Page Content -->
+        <!-- Page Content: Centers the main UI elements below the cover image -->
         <main class="w-full max-w-4xl mx-auto px-4 sm:px-12 md:px-24 pb-24 -mt-10 sm:-mt-16 relative z-10 flex flex-col">
 
-            <!-- Page Icon -->
+            <!-- Page Icon: A large emoji icon representing the current document or workspace -->
             <div class="text-[5rem] sm:text-[6rem] leading-none mb-4 group relative w-max cursor-pointer">
                 📝
                 <div class="absolute inset-0 hover:bg-black/5 rounded-lg transition-colors"></div>
             </div>
 
-            <!-- Header -->
+            <!-- Header: Contains the editable document title and additional actions like 'Add comment' -->
             <header class="w-full mb-8 group">
                 <h1 id="note-head" class="text-[2.5rem] font-bold text-[#37352F] leading-tight outline-none" contenteditable="true">Tasks</h1>
                 <div class="flex items-center gap-4 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -71,8 +72,9 @@
             <!-- Divider -->
             <div class="w-full h-[1px] bg-[#EBEBEA] mb-8"></div>
 
-            <!-- Input Section (Notion Block Style) -->
+            <!-- Input Section (Notion Block Style): Form for creating new tasks -->
             <section class="w-full mb-8 group relative pl-8">
+                <!-- Drag handle icon (visible on hover) -->
                 <div class="absolute left-0 top-2 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center gap-1 cursor-grab">
                     <div class="flex gap-[2px]">
                         <div class="w-1 h-1 bg-gray-300 rounded-full"></div>
@@ -119,10 +121,10 @@
                 </div>
             </section>
 
-            <!-- Tasks List Section -->
+            <!-- Tasks List Section: Container where dynamically created task cards are appended -->
             <section class="w-full pl-8">
                 <div id="center-cont" class="flex flex-col gap-1">
-                    <!-- Task Cards Will Be Injected Here -->
+                    <!-- Task Cards Will Be Injected Here by scripts/dom-ntake.js -->
                 </div>
             </section>
 
