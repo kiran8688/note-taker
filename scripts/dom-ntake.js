@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const taskInput = document.getElementById('note-task');
     const timeInput = document.getElementById('note-time');
     const checkInput = document.getElementById('check');
+    const mainCheckIcon = document.querySelector('.check-icon');
 
     submitBtn.addEventListener('click', () => {
         const nameofTask = taskInput.value.trim();
@@ -137,7 +138,6 @@ document.addEventListener("DOMContentLoaded", () => {
         checkInput.checked = false;
 
         // Reset main check icon if present
-        const mainCheckIcon = document.querySelector('.check-icon');
         if (mainCheckIcon) {
             updateCheckboxStyle(mainCheckIcon.parentElement, mainCheckIcon, false, 'hover:bg-gray-100');
         }
@@ -146,10 +146,19 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Handle main input checkbox toggle
-    if (checkInput) {
+    if (checkInput && mainCheckIcon) {
         checkInput.addEventListener('change', (e) => {
             const icon = e.target.parentElement.querySelector('.check-icon');
             updateCheckboxStyle(e.target.parentElement, icon, e.target.checked, 'hover:bg-gray-100');
+            if (e.target.checked) {
+                mainCheckIcon.classList.remove('hidden');
+                mainCheckIcon.parentElement.classList.add('bg-blue-500', 'border-blue-500');
+                mainCheckIcon.parentElement.classList.remove('border-gray-300', 'hover:bg-gray-100');
+            } else {
+                mainCheckIcon.classList.add('hidden');
+                mainCheckIcon.parentElement.classList.remove('bg-blue-500', 'border-blue-500');
+                mainCheckIcon.parentElement.classList.add('border-gray-300', 'hover:bg-gray-100');
+            }
         });
     }
 });
