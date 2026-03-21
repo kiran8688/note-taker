@@ -1,4 +1,23 @@
 document.addEventListener("DOMContentLoaded", () => {
+    /**
+     * Updates the styling of a checkbox label and its icon based on the checked state.
+     * @param {HTMLElement} label - The label element containing the checkbox.
+     * @param {HTMLElement} icon - The icon element (SVG) indicating the checked state.
+     * @param {boolean} isChecked - Whether the checkbox is checked.
+     * @param {string} hoverClass - The Tailwind hover background class to apply/remove.
+     */
+    function updateCheckboxStyle(label, icon, isChecked, hoverClass) {
+        if (isChecked) {
+            icon.classList.remove('hidden');
+            label.classList.add('bg-blue-500', 'border-blue-500');
+            label.classList.remove('border-gray-300', hoverClass);
+        } else {
+            icon.classList.add('hidden');
+            label.classList.remove('bg-blue-500', 'border-blue-500');
+            label.classList.add('border-gray-300', hoverClass);
+        }
+    }
+
     const submitBtn = document.querySelector('#button');
     const center = document.getElementById('center-cont');
     const taskInput = document.getElementById('note-task');
@@ -75,24 +94,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 cardContRow.className = 'group flex items-center justify-between p-2 rounded-md transition-all duration-200 ease-in-out border border-transparent opacity-50';
                 titleHeading.className = 'text-[15px] font-medium transition-colors text-gray-400 line-through';
                 timeSpan.className = 'text-xs transition-colors text-gray-400';
-                checkIcon.classList.remove('hidden');
-                checkboxLabel.classList.add('bg-blue-500', 'border-blue-500');
-                checkboxLabel.classList.remove('border-gray-300', 'hover:bg-gray-200');
             } else {
                 cardContRow.className = 'group flex items-center justify-between p-2 rounded-md transition-all duration-200 ease-in-out border border-transparent hover:bg-black/5';
                 titleHeading.className = 'text-[15px] font-medium transition-colors text-gray-900';
                 timeSpan.className = 'text-xs transition-colors text-gray-500 font-medium';
-                checkIcon.classList.add('hidden');
-                checkboxLabel.classList.remove('bg-blue-500', 'border-blue-500');
-                checkboxLabel.classList.add('border-gray-300', 'hover:bg-gray-200');
             }
+            updateCheckboxStyle(checkboxLabel, checkIcon, checked, 'hover:bg-gray-200');
         });
 
         // Initial checkbox styling
-        if (isChecked) {
-            checkboxLabel.classList.add('bg-blue-500', 'border-blue-500');
-            checkboxLabel.classList.remove('border-gray-300', 'hover:bg-gray-200');
-        }
+        updateCheckboxStyle(checkboxLabel, checkIcon, isChecked, 'hover:bg-gray-200');
 
         // Delete Button
         const deleteBtn = document.createElement('button');
@@ -128,9 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Reset main check icon if present
         const mainCheckIcon = document.querySelector('.check-icon');
         if (mainCheckIcon) {
-            mainCheckIcon.classList.add('hidden');
-            mainCheckIcon.parentElement.classList.remove('bg-blue-500', 'border-blue-500');
-            mainCheckIcon.parentElement.classList.add('border-gray-300', 'hover:bg-gray-100');
+            updateCheckboxStyle(mainCheckIcon.parentElement, mainCheckIcon, false, 'hover:bg-gray-100');
         }
 
         taskInput.focus();
@@ -140,15 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (checkInput) {
         checkInput.addEventListener('change', (e) => {
             const icon = e.target.parentElement.querySelector('.check-icon');
-            if (e.target.checked) {
-                icon.classList.remove('hidden');
-                e.target.parentElement.classList.add('bg-blue-500', 'border-blue-500');
-                e.target.parentElement.classList.remove('border-gray-300', 'hover:bg-gray-100');
-            } else {
-                icon.classList.add('hidden');
-                e.target.parentElement.classList.remove('bg-blue-500', 'border-blue-500');
-                e.target.parentElement.classList.add('border-gray-300', 'hover:bg-gray-100');
-            }
+            updateCheckboxStyle(e.target.parentElement, icon, e.target.checked, 'hover:bg-gray-100');
         });
     }
 });
