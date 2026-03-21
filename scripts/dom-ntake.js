@@ -82,17 +82,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 cardContRow.className = 'group flex items-center justify-between p-2 rounded-md transition-all duration-200 ease-in-out border border-transparent opacity-50';
                 titleHeading.className = 'text-[15px] font-medium transition-colors text-gray-400 line-through';
                 timeSpan.className = 'text-xs transition-colors text-gray-400';
-                checkIcon.classList.remove('hidden');
-                checkboxLabel.classList.add('bg-blue-500', 'border-blue-500');
-                checkboxLabel.classList.remove('border-gray-300', 'hover:bg-gray-200');
             } else {
                 cardContRow.className = 'group flex items-center justify-between p-2 rounded-md transition-all duration-200 ease-in-out border border-transparent hover:bg-black/5';
                 titleHeading.className = 'text-[15px] font-medium transition-colors text-gray-900';
                 timeSpan.className = 'text-xs transition-colors text-gray-500 font-medium';
-                checkIcon.classList.add('hidden');
-                checkboxLabel.classList.remove('bg-blue-500', 'border-blue-500');
-                checkboxLabel.classList.add('border-gray-300', 'hover:bg-gray-200');
             }
+            updateCheckboxStyle(checkboxLabel, checkIcon, checked, 'hover:bg-gray-200');
         });
 
         // Apply initial checkbox styling if the task was created as 'completed'
@@ -139,9 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Reset the visual state of the main input checkbox icon
         const mainCheckIcon = document.querySelector('.check-icon');
         if (mainCheckIcon) {
-            mainCheckIcon.classList.add('hidden');
-            mainCheckIcon.parentElement.classList.remove('bg-blue-500', 'border-blue-500');
-            mainCheckIcon.parentElement.classList.add('border-gray-300', 'hover:bg-gray-100');
+            updateCheckboxStyle(mainCheckIcon.parentElement, mainCheckIcon, false, 'hover:bg-gray-100');
         }
 
         // Set focus back to the task input for quick consecutive entry
@@ -153,14 +146,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (checkInput) {
         checkInput.addEventListener('change', (e) => {
             const icon = e.target.parentElement.querySelector('.check-icon');
+            updateCheckboxStyle(e.target.parentElement, icon, e.target.checked, 'hover:bg-gray-100');
             if (e.target.checked) {
-                icon.classList.remove('hidden');
-                e.target.parentElement.classList.add('bg-blue-500', 'border-blue-500');
-                e.target.parentElement.classList.remove('border-gray-300', 'hover:bg-gray-100');
+                mainCheckIcon.classList.remove('hidden');
+                mainCheckIcon.parentElement.classList.add('bg-blue-500', 'border-blue-500');
+                mainCheckIcon.parentElement.classList.remove('border-gray-300', 'hover:bg-gray-100');
             } else {
-                icon.classList.add('hidden');
-                e.target.parentElement.classList.remove('bg-blue-500', 'border-blue-500');
-                e.target.parentElement.classList.add('border-gray-300', 'hover:bg-gray-100');
+                mainCheckIcon.classList.add('hidden');
+                mainCheckIcon.parentElement.classList.remove('bg-blue-500', 'border-blue-500');
+                mainCheckIcon.parentElement.classList.add('border-gray-300', 'hover:bg-gray-100');
             }
         });
     }
