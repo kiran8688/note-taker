@@ -1,0 +1,14 @@
+127.0.0.1 - - [24/Mar/2026 05:46:39] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [24/Mar/2026 05:46:40] "GET /scripts/dom-ntake.js HTTP/1.1" 200 -
+127.0.0.1 - - [24/Mar/2026 05:51:50] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [24/Mar/2026 05:51:50] "GET /scripts/dom-ntake.js HTTP/1.1" 200 -
+127.0.0.1 - - [24/Mar/2026 05:52:31] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [24/Mar/2026 05:52:31] "GET /scripts/dom-ntake.js HTTP/1.1" 200 -
+127.0.0.1 - - [24/Mar/2026 05:52:54] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [24/Mar/2026 05:52:54] "GET /scripts/dom-ntake.js HTTP/1.1" 200 -
+127.0.0.1 - - [24/Mar/2026 05:53:35] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [24/Mar/2026 05:53:35] "GET /scripts/dom-ntake.js HTTP/1.1" 200 -
+127.0.0.1 - - [24/Mar/2026 05:54:27] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [24/Mar/2026 05:54:27] "GET /scripts/dom-ntake.js HTTP/1.1" 200 -
+127.0.0.1 - - [24/Mar/2026 05:54:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [24/Mar/2026 05:54:41] "GET /scripts/dom-ntake.js HTTP/1.1" 200 -

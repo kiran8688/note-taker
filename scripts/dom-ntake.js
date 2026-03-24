@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // --- Dynamic DOM Element Creation for Task Card ---
         // Create the main wrapper for the individual task card
         const cardContRow = document.createElement('div');
-        cardContRow.className = `group flex items-center justify-between p-3 sm:p-4 rounded-xl transition-all duration-300 ease-out bg-white/60 hover:bg-white border border-[#EBEBEA] shadow-sm hover:shadow-md mb-2 relative overflow-hidden ${isChecked ? 'opacity-60 scale-[0.99] grayscale-[30%]' : 'hover:-translate-y-0.5'}`;
+        cardContRow.className = `group flex items-center justify-between p-3 sm:p-4 rounded-2xl transition-all duration-300 ease-out bg-white/80 backdrop-blur-xl border border-white shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-gray-200/50 mb-2 relative overflow-hidden ${isChecked ? 'opacity-60 scale-[0.99] grayscale-[30%]' : 'hover:-translate-y-0.5'}`;
 
         // Left Side Content: Contains the checkbox, task name, and time
         const contentDiv = document.createElement('div');
@@ -106,11 +106,11 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleCheck.addEventListener('change', (e) => {
             const checked = e.target.checked;
             if (checked) {
-                cardContRow.className = 'group flex items-center justify-between p-3 sm:p-4 rounded-xl transition-all duration-300 ease-out bg-white/60 hover:bg-white border border-[#EBEBEA] shadow-sm mb-2 relative overflow-hidden opacity-60 scale-[0.99] grayscale-[30%]';
+                cardContRow.className = 'group flex items-center justify-between p-3 sm:p-4 rounded-2xl transition-all duration-300 ease-out bg-white/80 backdrop-blur-xl border border-white shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-gray-200/50 mb-2 relative overflow-hidden opacity-60 scale-[0.99] grayscale-[30%]';
                 titleHeading.className = 'text-base font-semibold transition-all duration-300 text-gray-400 line-through';
                 timeSpan.className = 'text-xs transition-colors flex items-center gap-1 mt-0.5 text-gray-400';
             } else {
-                cardContRow.className = 'group flex items-center justify-between p-3 sm:p-4 rounded-xl transition-all duration-300 ease-out bg-white/60 hover:bg-white border border-[#EBEBEA] shadow-sm hover:shadow-md mb-2 relative overflow-hidden hover:-translate-y-0.5';
+                cardContRow.className = 'group flex items-center justify-between p-3 sm:p-4 rounded-2xl transition-all duration-300 ease-out bg-white/80 backdrop-blur-xl border border-white shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-gray-200/50 mb-2 relative overflow-hidden hover:-translate-y-0.5';
                 titleHeading.className = 'text-base font-semibold transition-all duration-300 text-gray-900';
                 timeSpan.className = 'text-xs transition-colors flex items-center gap-1 mt-0.5 text-gray-500 font-medium';
             }
