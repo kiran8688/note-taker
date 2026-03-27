@@ -13,22 +13,9 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            /* Update background to a modern thematic image */
-            background-image: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
         }
 
-        /* Overlay to ensure content is readable and provide a themed look */
-        .theme-overlay {
-            position: fixed;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(250,250,250,0.4) 0%, rgba(250,250,250,0.8) 100%);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: -1;
-        }
+        /* Keep grid definition separate from body to prevent layout issues with padding */
 
         /* Custom scrollbar for webkit */
         ::-webkit-scrollbar {
@@ -49,10 +36,13 @@
 
     <title>Note-Taker App</title>
 </head>
-<body id="body" class="bg-[#FAFAFA] min-h-screen antialiased text-[#37352F] flex flex-row gap-6 p-4 sm:p-6 lg:p-8 selection:bg-blue-100 selection:text-blue-900">
+<body id="body" class="bg-[#FAFAFA] min-h-screen antialiased text-[#37352F] flex flex-row selection:bg-blue-100 selection:text-blue-900 p-4 sm:p-8 gap-6 relative">
+
+    <!-- Background element to ensure full coverage of grid and color without conflicting with padding -->
+    <div class="fixed inset-0 bg-[#FAFAFA] -z-20" style="background-image: radial-gradient(#e5e7eb 1px, transparent 1px); background-size: 20px 20px;"></div>
 
     <!-- Sidebar: Contains navigation links and user workspace branding. Uses Tailwind for a fixed sidebar layout. -->
-    <aside class="w-64 h-[calc(100vh-2rem)] hidden md:flex flex-col m-4 rounded-3xl bg-white/50 backdrop-blur-xl border border-white/20 shadow-xl shrink-0 sticky top-4 py-4 transition-all duration-300 ease-in-out z-20">
+    <aside class="w-64 h-[calc(100vh-4rem)] hidden md:flex flex-col bg-white/70 backdrop-blur-xl border border-white rounded-3xl shrink-0 sticky top-8 py-4 transition-all duration-300 ease-in-out z-20 shadow-xl shadow-gray-200/50">
         <!-- Sidebar Header with Workspace Switcher -->
         <div class="px-4 mb-6 flex items-center justify-between group cursor-pointer hover:bg-black/5 p-2 rounded-lg mx-2 transition-colors">
             <div class="flex items-center gap-2">
@@ -110,10 +100,10 @@
     </aside>
 
     <!-- Main Content Area: Flex container for the primary application interface -->
-    <div class="flex-1 flex flex-col h-[calc(100vh-2rem)] sm:h-[calc(100vh-3rem)] lg:h-[calc(100vh-4rem)] w-full relative rounded-3xl shadow-xl border border-white/60 bg-white/50 backdrop-blur-xl overflow-y-auto">
+    <div class="flex-1 flex flex-col min-h-[calc(100vh-4rem)] bg-white/70 backdrop-blur-xl border border-white rounded-3xl shadow-xl shadow-gray-200/50 w-full relative overflow-hidden">
 
         <!-- Top Navigation Bar -->
-        <nav class="sticky top-0 z-30 w-full bg-[#FAFAFA]/50 backdrop-blur-xl border-b border-white/20 transition-colors px-4 py-3 flex items-center justify-between text-sm shadow-sm">
+        <nav class="sticky top-0 z-30 w-full bg-white/40 backdrop-blur-xl border-b border-white/50 transition-colors px-6 py-4 flex items-center justify-between text-sm rounded-t-3xl shadow-sm">
             <div class="flex items-center gap-2 text-gray-500 font-medium">
                 <span class="hover:text-gray-900 cursor-pointer transition-colors">kiran's workspace</span>
                 <span class="text-gray-300">/</span>
@@ -186,7 +176,7 @@
                 </div>
 
                 <div id="note-body" class="flex flex-col gap-4">
-                    <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center bg-white/40 backdrop-blur-md p-3 sm:p-4 rounded-2xl border border-white/40 shadow-xl hover:shadow-2xl transition-all duration-300 ring-1 ring-white/50">
+                    <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center bg-white/80 backdrop-blur-xl p-3 sm:p-4 rounded-2xl border border-white shadow-xl shadow-gray-200/50 hover:shadow-2xl hover:shadow-gray-200/50 transition-all duration-300">
                         <!-- Checkbox & Task Name -->
                         <div class="flex-1 flex items-center gap-3.5 w-full">
                             <label class="flex items-center justify-center cursor-pointer shrink-0 w-5 h-5 border-[1.5px] border-gray-300 rounded hover:bg-gray-100 transition-colors relative shadow-sm">
