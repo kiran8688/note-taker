@@ -36,10 +36,16 @@
 
     <title>Note-Taker App</title>
 </head>
-<body id="body" class="bg-[#FAFAFA] min-h-screen antialiased text-[#37352F] flex flex-row selection:bg-blue-100 selection:text-blue-900 relative">
+<body id="body" class="bg-[#FAFAFA] min-h-screen antialiased text-[#37352F] flex flex-row p-4 sm:p-6 gap-4 sm:gap-6 selection:bg-blue-100 selection:text-blue-900 relative">
+
+    <!-- Fixed Background Theme Container -->
+    <div class="fixed inset-0 z-[-1]">
+        <img src="https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2029&auto=format&fit=crop" class="w-full h-full object-cover" alt="Theme Background">
+        <div class="absolute inset-0 bg-[#FAFAFA]/40 backdrop-blur-[8px]"></div>
+    </div>
 
     <!-- Sidebar: Contains navigation links and user workspace branding. Uses Tailwind for a fixed sidebar layout. -->
-    <aside class="w-64 h-screen hidden md:flex flex-col bg-white/70 backdrop-blur-xl border-r border-[#EBEBEA]/60 shadow-[4px_0_24px_-12px_rgba(0,0,0,0.1)] shrink-0 sticky top-0 py-4 transition-all duration-300 ease-in-out z-20">
+    <aside class="w-64 h-[calc(100vh-2rem)] sm:h-[calc(100vh-3rem)] hidden md:flex flex-col bg-white/70 backdrop-blur-xl border border-white/60 rounded-3xl shadow-xl shrink-0 sticky top-4 sm:top-6 py-4 transition-all duration-300 ease-in-out z-20 overflow-y-auto">
         <!-- Sidebar Header with Workspace Switcher -->
         <div class="px-4 mb-6 flex items-center justify-between group cursor-pointer hover:bg-black/5 p-2 rounded-lg mx-2 transition-colors">
             <div class="flex items-center gap-2">
@@ -97,7 +103,7 @@
     </aside>
 
     <!-- Main Content Area: Flex container for the primary application interface -->
-    <div class="flex-1 flex flex-col min-h-[calc(100vh-4rem)] bg-white/70 backdrop-blur-xl border border-white rounded-3xl shadow-xl shadow-gray-200/50 w-full relative overflow-hidden">
+    <div class="flex-1 flex flex-col h-[calc(100vh-2rem)] sm:h-[calc(100vh-3rem)] bg-white/70 backdrop-blur-xl border border-white/60 rounded-3xl shadow-xl w-full relative overflow-y-auto overflow-x-hidden">
 
         <!-- Top Navigation Bar -->
         <nav class="sticky top-0 z-30 w-full bg-white/40 backdrop-blur-2xl border-b border-[#EBEBEA]/50 px-6 py-3.5 flex items-center justify-between text-sm shadow-sm transition-all duration-300">
