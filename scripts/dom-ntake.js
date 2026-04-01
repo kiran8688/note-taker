@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Right Side Controls: Contains action buttons like Delete
         const controlsDiv = document.createElement('div');
-        controlsDiv.className = 'flex items-center ml-4 opacity-0 group-hover:opacity-100 transition-opacity z-10';
+        controlsDiv.className = 'flex items-center ml-4 opacity-100 transition-opacity z-10';
 
         // --- State Management: Handling Check/Uncheck ---
         // Listens for changes on the task card's checkbox to toggle visual completion state
