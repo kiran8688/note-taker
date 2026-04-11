@@ -35,10 +35,15 @@
 </head>
 <body id="body" class="bg-[#FAFAFA] min-h-screen antialiased text-[#1A1A1A] relative selection:bg-indigo-100 selection:text-indigo-900 overflow-hidden flex items-center justify-center p-4 sm:p-8">
 
-    <!-- Thematic Background Overlay (Dreamy gradient + Image) -->
+    <!-- Fixed Background Theme Container:
+         Provides the thematic Unsplash background while ensuring it does not interfere
+         with the primary body background color (#FAFAFA) required by tests.
+         pointer-events-none ensures it doesn't block clicks. -->
     <div class="fixed inset-0 z-[-1] pointer-events-none">
-        <div class="absolute inset-0 bg-gradient-to-tr from-pink-100 via-purple-50 to-indigo-100 opacity-90"></div>
-        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop" class="w-full h-full object-cover opacity-20 mix-blend-overlay" alt="Thematic Abstract Background">
+        <img src="https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2029&auto=format&fit=crop" class="w-full h-full object-cover" alt="Theme Background">
+        <!-- Backdrop blur layer creates the soft glassmorphic effect over the image -->
+        <div class="absolute inset-0 bg-[#FAFAFA]/40 backdrop-blur-[8px]"></div>
+    </div>
 
         <!-- Abstract glowing orbs -->
         <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-pink-300 rounded-full mix-blend-multiply filter blur-[100px] opacity-40 animate-blob"></div>

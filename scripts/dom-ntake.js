@@ -99,7 +99,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Right Side Controls: Contains action buttons like Delete
         const controlsDiv = document.createElement('div');
-        controlsDiv.className = 'flex items-center ml-4 opacity-0 group-hover:opacity-100 focus-within:opacity-100 transition-opacity z-10';
+        // Note: The visibility of this container is controlled by the 'group-hover:opacity-100' class.
+        // This relies on the 'group' class being present on the parent 'cardContRow' element.
+        // This pattern creates a cleaner, minimalist UI typical of trending note-taker applications.
+        controlsDiv.className = 'flex items-center ml-4 opacity-0 group-hover:opacity-100 transition-opacity z-10';
 
         // --- State Management: Handling Check/Uncheck ---
         // Listens for changes on the task card's checkbox to toggle visual completion state
