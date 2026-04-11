@@ -36,16 +36,19 @@
 <body id="body" class="bg-[#FAFAFA] min-h-screen antialiased text-[#1A1A1A] relative selection:bg-indigo-100 selection:text-indigo-900 overflow-hidden flex items-center justify-center p-4 sm:p-8">
 
     <!-- Fixed Background Theme Container -->
-    <div class="fixed inset-0 z-[-1] pointer-events-none">
-        <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="Theme Background">
-        <div class="absolute inset-0 bg-gradient-to-br from-[#FAFAFA]/40 to-[#FAFAFA]/60 backdrop-blur-[8px]"></div>
-    </div>
+    <div class="fixed inset-0 z-[-1] bg-gradient-to-br from-[#8EC5FC] via-[#E0C3FC] to-[#8EC5FC]"></div>
 
-        <!-- Abstract glowing orbs -->
-        <div class="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] bg-pink-300 rounded-full mix-blend-multiply filter blur-[100px] opacity-40 animate-blob"></div>
-        <div class="absolute top-[20%] right-[-10%] w-[35vw] h-[35vw] bg-indigo-300 rounded-full mix-blend-multiply filter blur-[100px] opacity-40 animate-blob animation-delay-2000"></div>
-        <div class="absolute bottom-[-20%] left-[20%] w-[45vw] h-[45vw] bg-purple-300 rounded-full mix-blend-multiply filter blur-[100px] opacity-40 animate-blob animation-delay-4000"></div>
-    </div>
+    <!-- Sidebar: Contains navigation links and user workspace branding. Uses Tailwind for a fixed sidebar layout. -->
+    <aside class="w-64 h-[calc(100vh-2rem)] sm:h-[calc(100vh-3rem)] hidden md:flex flex-col bg-white/80 backdrop-blur-2xl border border-white/40 rounded-3xl shadow-2xl shrink-0 sticky top-4 sm:top-6 py-4 transition-all duration-300 ease-in-out z-20 overflow-y-auto">
+        <!-- Sidebar Header with Workspace Switcher -->
+        <div class="px-4 mb-6 flex items-center justify-between group cursor-pointer hover:bg-black/5 p-2 rounded-lg mx-2 transition-colors">
+            <div class="flex items-center gap-2">
+                <!-- User Avatar & Workspace Name -->
+                <div class="w-5 h-5 bg-gradient-to-br from-gray-300 to-gray-400 shadow-inner rounded-sm flex items-center justify-center text-white text-xs font-bold ring-1 ring-black/5">K</div>
+                <span class="font-semibold text-sm truncate">kiran's workspace</span>
+            </div>
+            <svg class="w-4 h-4 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path></svg>
+        </div>
 
     <!-- Main Central Application Window (Floating Glassmorphism) -->
     <main class="w-full max-w-5xl h-[85vh] bg-white/60 backdrop-blur-3xl border border-white/80 rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] flex flex-col overflow-hidden relative z-10">
@@ -58,6 +61,45 @@
                     <span class="text-xs font-bold text-gray-500 uppercase tracking-widest leading-none">kiran's workspace</span>
                     <span class="text-sm font-semibold text-gray-800 leading-tight">Focus Board</span>
                 </div>
+                <button class="opacity-0 group-hover:opacity-100 text-gray-300 hover:text-gray-500 transition-all">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
+                </button>
+            </a>
+
+            <div class="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider mt-6 mb-1">Private</div>
+            <a href="#" class="flex items-center gap-2 px-3 py-1.5 hover:bg-black/5 rounded-md text-sm font-medium text-gray-600 transition-colors group">
+                <svg class="w-4 h-4 text-gray-400 group-hover:text-gray-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                Project Planning
+            </a>
+            <a href="#" class="flex items-center gap-2 px-3 py-1.5 hover:bg-black/5 rounded-md text-sm font-medium text-gray-600 transition-colors group">
+                <svg class="w-4 h-4 text-gray-400 group-hover:text-gray-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                Calendar
+            </a>
+            <a href="#" class="flex items-center gap-2 px-3 py-1.5 hover:bg-black/5 rounded-md text-sm font-medium text-gray-600 transition-colors group">
+                <svg class="w-4 h-4 text-gray-400 group-hover:text-gray-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                Settings
+            </a>
+        </nav>
+
+        <!-- Bottom Trash/Help -->
+        <div class="px-4 mt-auto pt-4 border-t border-white/30 space-y-1">
+            <a href="#" class="flex items-center gap-2 px-2 py-1.5 hover:bg-black/5 rounded-md text-sm font-medium text-gray-500 transition-colors">
+                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                Trash
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Area: Flex container for the primary application interface -->
+    <div class="flex-1 flex flex-col h-[calc(100vh-2rem)] sm:h-[calc(100vh-3rem)] bg-white/80 backdrop-blur-2xl border border-white/40 rounded-3xl shadow-2xl w-full relative overflow-y-auto overflow-x-hidden">
+
+        <!-- Top Navigation Bar -->
+        <nav class="sticky top-0 z-30 w-full bg-white/40 backdrop-blur-2xl border-b border-[#EBEBEA]/50 px-6 py-3.5 flex items-center justify-between text-sm shadow-sm transition-all duration-300">
+            <!-- Breadcrumb Navigation -->
+            <div class="flex items-center gap-2.5 text-gray-500 font-medium bg-white/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-gray-100 shadow-sm">
+                <span class="hover:text-gray-900 cursor-pointer transition-colors text-xs uppercase tracking-wider">kiran's workspace</span>
+                <svg class="w-3.5 h-3.5 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                <span class="text-gray-900 flex items-center gap-1.5 text-sm"><span class="text-base leading-none drop-shadow-sm">📝</span> Daily Tasks</span>
             </div>
 
             <div class="flex gap-2">
@@ -68,7 +110,18 @@
                     Share
                 </button>
             </div>
-        </header>
+        </nav>
+
+        <!-- Cover Image Section: Displays an Unsplash image with a hover-to-change button -->
+        <div class="w-full h-56 sm:h-80 object-cover overflow-hidden relative group">
+            <!-- Overlay gradient for better text legibility if cover text is added later -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20 z-10 pointer-events-none"></div>
+            <img src="https://images.unsplash.com/photo-1588681664899-f142ff2dc9b1?q=80&w=2000" alt="Cover Image" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out">
+            <button class="absolute bottom-6 right-8 bg-white/80 hover:bg-white backdrop-blur-xl px-4 py-2 rounded-full text-xs font-semibold text-gray-700 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 shadow-lg border border-white/40 z-20 flex items-center gap-2">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                Change cover
+            </button>
+        </div>
 
         <!-- Content Area -->
         <div class="flex-1 overflow-y-auto px-6 sm:px-12 py-10 flex flex-col relative">
