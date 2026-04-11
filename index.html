@@ -38,10 +38,10 @@
 </head>
 <body id="body" class="bg-[#FAFAFA] min-h-screen antialiased text-[#37352F] flex flex-row p-4 sm:p-6 gap-4 sm:gap-6 selection:bg-blue-100 selection:text-blue-900 relative">
 
-    <!-- Thematic Background Overlay (Trending note-taker design) -->
+    <!-- Fixed Background Theme Container -->
     <div class="fixed inset-0 z-[-1] pointer-events-none">
-        <div class="absolute inset-0 bg-gradient-to-br from-[#fdfbfb] via-[#e2ebf0]/50 to-[#ebedee] opacity-80 mix-blend-multiply"></div>
-        <img src="https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2029&auto=format&fit=crop" class="w-full h-full object-cover opacity-[0.15] mix-blend-color-burn" alt="Thematic Background Overlay">
+        <img src="https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2029&auto=format&fit=crop" class="w-full h-full object-cover" alt="Theme Background">
+        <div class="absolute inset-0 bg-[#FAFAFA]/40 backdrop-blur-[8px]"></div>
     </div>
 
     <!-- Sidebar: Contains navigation links and user workspace branding. Uses Tailwind for a fixed sidebar layout. -->
