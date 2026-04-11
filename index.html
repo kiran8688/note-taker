@@ -35,14 +35,10 @@
 </head>
 <body id="body" class="bg-[#FAFAFA] min-h-screen antialiased text-[#1A1A1A] relative selection:bg-indigo-100 selection:text-indigo-900 overflow-hidden flex items-center justify-center p-4 sm:p-8">
 
-    <!-- Fixed Background Theme Container:
-         Provides the thematic Unsplash background while ensuring it does not interfere
-         with the primary body background color (#FAFAFA) required by tests.
-         pointer-events-none ensures it doesn't block clicks. -->
+    <!-- Fixed Background Theme Container -->
     <div class="fixed inset-0 z-[-1] pointer-events-none">
-        <img src="https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2029&auto=format&fit=crop" class="w-full h-full object-cover" alt="Theme Background">
-        <!-- Backdrop blur layer creates the soft glassmorphic effect over the image -->
-        <div class="absolute inset-0 bg-[#FAFAFA]/40 backdrop-blur-[8px]"></div>
+        <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="Theme Background">
+        <div class="absolute inset-0 bg-gradient-to-br from-[#FAFAFA]/40 to-[#FAFAFA]/60 backdrop-blur-[8px]"></div>
     </div>
 
         <!-- Abstract glowing orbs -->
