@@ -99,6 +99,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Right Side Controls: Contains action buttons like Delete
         const controlsDiv = document.createElement('div');
+        // Note: The visibility of this container is controlled by the 'group-hover:opacity-100' class.
+        // This relies on the 'group' class being present on the parent 'cardContRow' element.
+        // This pattern creates a cleaner, minimalist UI typical of trending note-taker applications.
         controlsDiv.className = 'flex items-center ml-4 opacity-0 group-hover:opacity-100 transition-opacity z-10';
 
         // --- State Management: Handling Check/Uncheck ---
@@ -106,11 +109,11 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleCheck.addEventListener('change', (e) => {
             const checked = e.target.checked;
             if (checked) {
-                cardContRow.className = 'group flex items-center justify-between p-4 sm:p-5 rounded-[1.5rem] transition-all duration-300 ease-out bg-white/70 backdrop-blur-md hover:bg-white/90 border border-white/60 shadow-[0_4px_20px_rgb(0,0,0,0.04)] mb-3 relative overflow-hidden opacity-60 scale-[0.99] grayscale-[30%]';
+                cardContRow.className = 'group flex items-center justify-between p-4 sm:p-5 rounded-[1.5rem] transition-all duration-300 ease-out bg-white/80 backdrop-blur-2xl hover:bg-white/90 border border-white/60 shadow-[0_4px_20px_rgb(0,0,0,0.04)] mb-3 relative overflow-hidden opacity-60 scale-[0.99] grayscale-[30%]';
                 titleHeading.className = 'text-base font-semibold transition-all duration-300 text-gray-400 line-through';
                 timeSpan.className = 'text-xs transition-colors flex items-center gap-1 mt-0.5 text-gray-400';
             } else {
-                cardContRow.className = 'group flex items-center justify-between p-4 sm:p-5 rounded-[1.5rem] transition-all duration-300 ease-out bg-white/70 backdrop-blur-md hover:bg-white/90 border border-white/60 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] mb-3 relative overflow-hidden hover:-translate-y-1';
+                cardContRow.className = 'group flex items-center justify-between p-4 sm:p-5 rounded-[1.5rem] transition-all duration-300 ease-out bg-white/80 backdrop-blur-2xl hover:bg-white/90 border border-white/60 shadow-[0_4px_20px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] mb-3 relative overflow-hidden hover:-translate-y-1';
                 titleHeading.className = 'text-base font-semibold transition-all duration-300 text-gray-900';
                 timeSpan.className = 'text-xs transition-colors flex items-center gap-1 mt-0.5 text-gray-500 font-medium';
             }
