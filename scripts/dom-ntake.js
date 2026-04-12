@@ -175,11 +175,10 @@ document.addEventListener("DOMContentLoaded", () => {
     submitBtn.addEventListener('click', createTask);
 
     // Event listener for adding a new task via Enter key in input fields
-    taskInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') createTask();
-    });
-    timeInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') createTask();
+    [taskInput, timeInput].forEach(input => {
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') createTask();
+        });
     });
 
     // --- State Management: Main Input Checkbox ---
